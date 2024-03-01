@@ -1,13 +1,19 @@
 from __future__ import annotations
 from typing import *
 
+from datetime import datetime
+
+import json 
+
 import tempfile
 
 from tqdm import tqdm
 
 class Checkpoint:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, it: int, *kwargs) -> None:
+        self.timestamp = datetime.now()
+        self.it = it
+        self.variables = kwargs
 
 class CheckpointSaver:
     def __init__(self, function: function, save_per: int) -> None:
